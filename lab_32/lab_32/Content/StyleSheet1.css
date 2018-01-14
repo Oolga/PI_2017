@@ -1,0 +1,10 @@
+﻿.mybutton {
+    background-color: antiquewhite;
+    width: 250px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mytext {
+    height: 15px;
+    color: blue;
+}

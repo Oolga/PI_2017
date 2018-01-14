@@ -1,0 +1,13 @@
+E:\Programming\University\PI\lab_38\lab_38.host\bin\Debug\lab_38.host.exe.config
+E:\Programming\University\PI\lab_38\lab_38.host\bin\Debug\lab_38.host.exe
+E:\Programming\University\PI\lab_38\lab_38.host\bin\Debug\lab_38.host.pdb
+E:\Programming\University\PI\lab_38\lab_38.host\bin\Debug\lab_38.dll
+E:\Programming\University\PI\lab_38\lab_38.host\bin\Debug\lab_38.pdb
+E:\Programming\University\PI\lab_38\lab_38.host\bin\Debug\lab_38.dll.config
+E:\Programming\University\PI\lab_38\lab_38.host\obj\Debug\lab_38.host.Form1.resources
+E:\Programming\University\PI\lab_38\lab_38.host\obj\Debug\lab_38.host.Properties.Resources.resources
+E:\Programming\University\PI\lab_38\lab_38.host\obj\Debug\lab_38.host.csproj.GenerateResource.Cache
+E:\Programming\University\PI\lab_38\lab_38.host\obj\Debug\lab_38.host.csproj.CoreCompileInputs.cache
+E:\Programming\University\PI\lab_38\lab_38.host\obj\Debug\lab_38.host.exe
+E:\Programming\University\PI\lab_38\lab_38.host\obj\Debug\lab_38.host.pdb
+E:\Programming\University\PI\lab_38\lab_38.host\obj\Debug\lab_38.host.csprojResolveAssemblyReference.cache

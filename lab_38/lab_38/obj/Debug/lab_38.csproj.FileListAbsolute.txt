@@ -1,0 +1,7 @@
+E:\Programming\University\PI\lab_38\lab_38\bin\Debug\lab_38.dll.config
+E:\Programming\University\PI\lab_38\lab_38\bin\Debug\lab_38.dll
+E:\Programming\University\PI\lab_38\lab_38\bin\Debug\lab_38.pdb
+E:\Programming\University\PI\lab_38\lab_38\obj\Debug\lab_38.csproj.CoreCompileInputs.cache
+E:\Programming\University\PI\lab_38\lab_38\obj\Debug\lab_38.dll
+E:\Programming\University\PI\lab_38\lab_38\obj\Debug\lab_38.pdb
+E:\Programming\University\PI\lab_38\lab_38\obj\Debug\lab_38.csprojResolveAssemblyReference.cache

@@ -1,0 +1,195 @@
+﻿
+    <script type="text/javascript">
+            $(document).ready(function () {
+
+                GetAllItems();
+
+                $("#editItem").click(function (event) {
+                    event.preventDefault();
+                    SaveItem();
+                  //  GetAllItems();
+                });
+
+                $("#addItem").click(function (event) {
+                    event.preventDefault();
+                    AddItem();
+                  //  GetAllItems();
+                });
+
+            });
+            // Получение всех книг по ajax-запросу
+            function GetAllItems() {
+
+              //  $("#createItem").css('display', 'block');
+             //   $("#editItem").css('display', 'none');
+                $.ajax({
+                    url: '/api/apiphone',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        WriteResponse(data);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            }
+            // Добавление новой книги
+            function AddItem() {
+                // получаем значения для добавляемой книги
+                var book = {
+                    Surname: $('#addSurname').val(),
+                    Firstname: $('#addFirstname').val(),
+                    Middlename: $('#addMiddlename').val(),
+                    BDay: $('#addBDay').val(),
+                    Phone: $('#addPhone').val()
+                };
+
+                $.ajax({
+                    url: '/api/ApiPhone',
+                    type: 'POST',
+                    data: JSON.stringify(book),
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        GetAllItems();
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            }
+            // Удаление книги
+            function DelItem(id) {
+
+                $.ajax({
+                    url: '/api/apiphone/' + id,
+                    type: 'DELETE',
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        GetAllItems();
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            }
+            // редактирование книги
+            function SaveItem() {
+                var id = $('#editId').val()
+                // получаем новые значения для редактируемой книги
+                var book = {
+                    Id: $('#editId').val(),
+                    Surname: $('#editSurname').val(),
+                    Firstname: $('#editFirstname').val(),
+                    Middlename: $('#editMiddlename').val(),
+                    BDay: $('#editBDay').val(),
+                    Phone: $('#editPhone').val()
+                };
+                $.ajax({
+                    url: '/api/ApiPhone/' + id,
+                    type: 'PUT',
+                    data: JSON.stringify(book),
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        GetAllItems();
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            }
+            // вывод полученных данных на экран
+            function WriteResponse(items) {
+                var strResult = " <table class='table'>" +
+                    "< tr >" +
+
+                    "<th>Surname</th>" +
+                    " <th>Middlename</th>" +
+                    " <th>Firstname</th>" +
+                    "<th>Birthday</th>" +
+                    "  <th>Phone</th>" +
+                    " <th></th>" +
+                    " <th></th>" +
+                    "</tr >";
+                $.each(items, function (index, item) {
+                    strResult += "<tr><td> " + item.Surname + "</td><td>" +
+                        item.Middlename + "</td><td>" + item.Firstname +
+                        "</td><td>" + item.BDay.substring(0, 10) + "</td><td>" + item.Phone + "</td><td><a id='editItem' data-item='" + item.Id + "' onclick='EditItem(this);' >Редактировать</a></td>" +
+                        "<td><a id='delItem' data-item='" + item.Id + "' onclick='DeleteItem(this);' >Удалить</a></td></tr>";
+                });
+                strResult += "</table>";
+                $("#tableBlock").html(strResult);
+
+            }
+            // обработчик удаления
+            function DeleteItem(el) {
+
+                // получаем id удаляемого объекта
+                var id = $(el).attr('data-item');
+                DelItem(id);
+            }
+            // обработчик редактирования
+            function EditItem(el) {
+
+                // получаем id редактируемого объекта
+                var id = $(el).attr('data-item');
+                GetItem(id);
+            }
+            // вывод данных редактируемой книги в поля для редактирования
+            function ShowItem(item) {
+                if (item != null) {
+                 //   $("#createBlock").css('display', 'none');
+                //    $("#editBlock").css('display', 'block');
+                    $("#editId").val(item.Id);
+                    $('#editSurname').val(item.Surname);
+                    $('#editFirstname').val(item.Firstname);
+                    $('#editMiddlename').val(item.Middlename);
+                    $('#editBDay').val(/*new Date(item.BDay.substring(0, 4), item.BDay.substring(5, 7), item.BDay.substring(8, 10).replace("0","")));*/item.BDay.substring(0,10));
+                    $('#editPhone').val(item.Phone);
+                }
+                else {
+                    alert("Такая книга не существует");
+                }
+            }
+            // запрос книги на редактирование
+            function GetItem(id) {
+
+                $.ajax({
+                    url: '/api/ApiPhone/' + id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        ShowItem(data);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            }
+    </script>
+
+
+    <div id="tableBlock"></div>
+    <div id="editBlock">
+        <h3>Edit</h3>
+        <table class="table">
+            <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
+            <tr><td><label>Surname: </label></td><td><input type="text" id="editSurname" /></td></tr>
+            <tr><td><label>Firstname: </label></td><td><input type="text" id="editFirstname" /></td></tr>
+            <tr><td><label>Middlename: </label></td><td><input type="text" id="editMiddlename" /></td></tr>
+            <tr><td><label>BDay: </label></td><td><input type="date" id="editBDay" /></td></tr>
+            <tr><td><label>Phone: </label></td><td><input type="number" id="editPhone" /></td></tr>
+        </table>
+        <button id="editItem">Save</button>
+    </div>
+    <div id="createItem">
+        <h3>Create new</h3>
+        <table class="table">
+            <tr><td><label>Surname: </label></td><td><input type="text" id="addSurname" /></td></tr>
+            <tr><td><label>Firstname: </label></td><td><input type="text" id="addFirstname" /></td></tr>
+            <tr><td><label>Middlename: </label></td><td><input type="text" id="addMiddlename" /></td></tr>
+            <tr><td><label>BDay: </label></td><td><input type="date" id="addBDay" /></td></tr>
+            <tr><td><label>Phone: </label></td><td><input type="number" id="addPhone" /></td></tr>
+        </table>
+        <button id="addItem">Save</button>
+    </div>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<lab_39.Models.Item>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<script type="text/javascript">
+
+    function deleteItem(button) {
+
+
+        var id = button.parentElement.parentElement.children[0].children[0].value;
+        $.ajax({
+            url: "/Phone/Delete/" + id,
+            contentType: "application/html; charset=utf-8",
+            type: 'GET',
+            dataType: 'html'
+        }).success(function (result) {
+            debugger;
+            $('#partial').html(result);
+            $('#view1').html("");
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            debugger;
+            $('#error').html(errorThrown);
+        });
+    }
+  
+</script>
+<p>
+    <a href="http://localhost:52226/Phone/Add">Create new</a>
+</p>
+<div id="error">
+    @ViewBag.errorText
+</div>
+<div id="partial">
+    </div>
+<div id="view1">
+    @Html.Partial("View1", Model)
+</div>
+
+        @*<table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Firstname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Middlename)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BDay)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th></th>
+                </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Firstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Middlename)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BDay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Update", new { id=item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    </td>
+                </tr>
+            }
+
+            </table>*@

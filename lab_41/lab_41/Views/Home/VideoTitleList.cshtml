@@ -1,0 +1,43 @@
+﻿@model IEnumerable<lab_41.DAL.Models.Video>
+
+<script>
+    function GetPartial(id) {
+        debugger;
+        nid = id.replace("'", "");
+        $.ajax({
+            url: "/Home/GetVideo/" + nid,
+            contentType: "application/html; charset=utf-8",
+            type: 'GET',
+            dataType: 'html'
+        }).success(function (result) {
+            debugger;
+            $('#video').html(result);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            debugger;
+           // $('#error').html(errorThrown);
+        });
+    }
+</script>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <button class="btn-success" onclick="GetPartial('@item.ID')">@item.Name</button>
+            @*@Html.DisplayFor(modelItem => item.Title)*@
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+        </td>
+    </tr>
+}
+
+</table>

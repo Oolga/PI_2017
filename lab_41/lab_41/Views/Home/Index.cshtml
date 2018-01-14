@@ -1,0 +1,25 @@
+﻿@model  IEnumerable<lab_41.DAL.Models.Video>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="postedFile" />
+        <input type="submit" id="btnUpload" value="Upload" class="btn-success" />
+}
+
+<div class="row">
+    <div class="col-md-2">
+        @{Html.RenderPartial("VideoTitleList", Model);}
+    </div>
+    <div class="col-md-8">
+        <div id="video">
+        </div>
+        @*<video width="320" height="240" controls>
+            <source src="~/Videos/" type="video/mp4">
+        </video>*@
+    </div>
+
+</div>

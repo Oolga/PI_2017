@@ -1,0 +1,10 @@
+E:\Programming\University\PI\lab_36\WinFormsApp\bin\Debug\WinFormsApp.exe.config
+E:\Programming\University\PI\lab_36\WinFormsApp\bin\Debug\WinFormsApp.exe
+E:\Programming\University\PI\lab_36\WinFormsApp\bin\Debug\WinFormsApp.pdb
+E:\Programming\University\PI\lab_36\WinFormsApp\obj\Debug\WinFormsApp.csprojResolveAssemblyReference.cache
+E:\Programming\University\PI\lab_36\WinFormsApp\obj\Debug\WinFormsApp.Form1.resources
+E:\Programming\University\PI\lab_36\WinFormsApp\obj\Debug\WinFormsApp.Properties.Resources.resources
+E:\Programming\University\PI\lab_36\WinFormsApp\obj\Debug\WinFormsApp.csproj.GenerateResource.Cache
+E:\Programming\University\PI\lab_36\WinFormsApp\obj\Debug\WinFormsApp.csproj.CoreCompileInputs.cache
+E:\Programming\University\PI\lab_36\WinFormsApp\obj\Debug\WinFormsApp.exe
+E:\Programming\University\PI\lab_36\WinFormsApp\obj\Debug\WinFormsApp.pdb
